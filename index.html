@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing Game</title>
+    <script>
+        function Guessing() {
+            let randomNumber = Math.floor(Math.random() * 10) + 1;
+            let attempts = 0;
+            let userGuess;
+
+            while (true) {
+                userGuess = prompt("Guess a number between 1 and 10 (or type '999' to exit):");
+                if (userGuess === null) {
+                    alert("Game cancelled.");
+                    break;
+                }
+
+                userGuess = Number(userGuess);
+                attempts++;
+
+                if (userGuess === 999) {
+                    alert("Game exited.");
+                    break;
+                } else if (isNaN(userGuess) || userGuess < 1 || userGuess > 10) {
+                    alert("Please enter a valid number between 1 and 10.");
+                } else if (userGuess < randomNumber) {
+                    alert("Too low! Guess again.");
+                } else if (userGuess > randomNumber) {
+                    alert("Too high! Guess again.");
+                } else {
+                    alert(`Congratulations, you've guessed it in ${attempts} tries!`);
+                    break;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <button onclick="Guessing()">Start Game</button>
+</body>
+</html>
